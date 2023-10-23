@@ -4,7 +4,7 @@ import numpy as np
 import sounddevice as sd
 
 
-class AudioClass:
+class AudioMorpher:
     def __init__(self, mixer):
         config = load_config(CONFIG_PATH)
         self.loops = config["morphing"]["loops"]
@@ -19,22 +19,22 @@ class AudioClass:
             for path in os.listdir(self.audio_folder)
         ]
         sounds = [np.load(file) for file in file_names]
-        self.sounds = self.convert_to_mixer_sounds(
+        self.sounds = self._convert_to_mixer_sounds(
             sounds
         )  # convert our audios into pygame Sound objects
 
-    def play_sd_audio(self, audio):
+    def play_audio(self, audio):
         sd.play(audio, 44100)  # playing back the recording
         return
 
-    def convert_to_mixer_sounds(self, audios):
+    def _convert_to_mixer_sounds(self, audios):
         sounds = []
         for audio in audios:
             sound = self.mixer.Sound(audio)
             sounds.append(sound)
         return sounds
 
-    def start_playing_(self):
+    def _start_playing(self):
         for sound in self.sounds:
             sound.play(loops=self.loops)
             sound.set_volume(0.0)
@@ -63,7 +63,7 @@ class AudioClass:
             self.sound_idx_to_mute = 4
 
     def start_morphing(self, queue):
-        self.start_playing_()
+        self._start_playing()
 
         while True:
             message = queue.get()
@@ -76,7 +76,6 @@ class AudioClass:
                     sound.set_volume(0.0)
                     self.sounds[sound_idx_to_activate].set_volume(1.0)
                     self.sound_idx_to_mute = sound_idx_to_activate
-
             else:
                 break
 
