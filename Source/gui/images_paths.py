@@ -6,45 +6,45 @@ DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 # Paths to various UI assets.
 ICON_PATH = os.path.join(
     DIR_PATH,
-    "/Users/lorenzobrugioni/Programmer/MorphFun/MorphFun/Source/images/music-notes.ico",
+    "../images/music-notes.ico",
 )
 BACKGROUND_PATH = os.path.join(
     DIR_PATH,
-    "/Users/lorenzobrugioni/Programmer/MorphFun/MorphFun/Source/images/background.png",
+    "../images/background.png",
 )
 REC_BUTTON_PATH = os.path.join(
     DIR_PATH,
-    "/Users/lorenzobrugioni/Programmer/MorphFun/MorphFun/Source/images/recbutton.png",
+    "../images/recbutton.png",
 )
 REC_BUTTON_PRESSED_PATH = os.path.join(
     DIR_PATH,
-    "/Users/lorenzobrugioni/Programmer/MorphFun/MorphFun/Source/images/recbutton_pressed.png",
+    "../images/recbutton_pressed.png",
 )
 REC_BUTTON_ON_PATH = os.path.join(
     DIR_PATH,
-    "/Users/lorenzobrugioni/Programmer/MorphFun/MorphFun/Source/images/recbutton_on.png",
+    "../images/recbutton_on.png",
 )
 PLAY_BUTTON_PATH = os.path.join(
     DIR_PATH,
-    "/Users/lorenzobrugioni/Programmer/MorphFun/MorphFun/Source/images/playbutton.png",
+    "../images/playbutton.png",
 )
 PLAY_BUTTON_PRESSED_PATH = os.path.join(
     DIR_PATH,
-    "/Users/lorenzobrugioni/Programmer/MorphFun/MorphFun/Source/images/playbutton_pressed.png",
+    "../images/playbutton_pressed.png",
 )
 STOP_BUTTON_PATH = os.path.join(
     DIR_PATH,
-    "/Users/lorenzobrugioni/Programmer/MorphFun/MorphFun/Source/images/stopbutton.png",
+    "../images/stopbutton.png",
 )
 STOP_BUTTON_PRESSED_PATH = os.path.join(
     DIR_PATH,
-    "/Users/lorenzobrugioni/Programmer/MorphFun/MorphFun/Source/images/stopbutton_pressed.png",
+    "../images/stopbutton_pressed.png",
 )
 CLEAR_BUTTON_PATH = os.path.join(
     DIR_PATH,
-    "/Users/lorenzobrugioni/Programmer/MorphFun/MorphFun/Source/images/clearbutton.png",
+    "../images/clearbutton.png",
 )
 CLEAR_BUTTON_PRESSED_PATH = os.path.join(
     DIR_PATH,
-    "/Users/lorenzobrugioni/Programmer/MorphFun/MorphFun/Source/images/clearbutton_pressed.png",
+    "../images/clearbutton_pressed.png",
 )

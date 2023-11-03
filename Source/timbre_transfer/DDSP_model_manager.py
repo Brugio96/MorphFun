@@ -3,7 +3,7 @@ import ddsp
 import time
 import tensorflow as tf
 
-MODEL_DIR = "Source/models"
+MODEL_DIR = "source/models"
 
 
 class ModelManager:

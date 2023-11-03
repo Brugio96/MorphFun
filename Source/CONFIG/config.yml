@@ -1,12 +1,12 @@
-pose_estimation: 
+pose_classification: 
   actions: ['flute', 'violin', 'trumpet', 'saxophone', 'no action']
   sequence_length: 30
   latency_factor: 2 
 
 files: 
-  model_path: "Source/pose_estimation/final_model.h5"
-  audio: 'Source/audio/'
-  img: 'Source/images/'
+  model_path: "source/pose/final_model.h5"
+  audio: 'source/audio_resources/'
+  img: 'source/images/'
 
 
 morphing:
@@ -16,5 +16,5 @@ morphing:
 
 controller: 
   sr: 44100
-  messages: ['Rec', 'Play', 'Pause', 'Clear']
+  messages: ['Start Rec', 'Stop Rec', 'Play', 'Pause', 'Clear']
   max_duration: 14

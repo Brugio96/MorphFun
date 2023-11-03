@@ -14,7 +14,7 @@ class AudioFeatureModifier:
             statistics (dict): Dataset statistics for the audio.
             config (AudioFeatureConfig): Configuration for modifying audio features.
         """
-        self.audio_features = audio_features.copy()
+        self.audio_features = {k: v for k, v in audio_features.items()}
         self.statistics = statistics
         self.config = config
         self.mask_on = None
@@ -74,7 +74,7 @@ class AudioFeatureModifier:
         )
         self.audio_features["loudness_db"] = loudness_norm
 
-    def _shift_ld(self, ld_shift=0.0):
+    def _shift_ld(self, ld_shift=6.0):
         """Shifts the loudness by a specified value.
 
         Args:
@@ -98,9 +98,9 @@ class AudioFeatureConfig:
     """Configuration for modifying audio features."""
 
     def __init__(self):
-        self.threshold = 0.7  # Threshold for detecting notes
+        self.threshold = 1.0  # Threshold for detecting notes
         self.ADJUST = True  # Flag to determine if adjustments should be applied
         self.quiet = 20  # Value for quieting the audio
         self.autotune = 0.0  # Autotune configuration
-        self.pitch_shift = -1  # Number of octaves by which to shift the pitch
+        self.pitch_shift = 0  # Number of octaves by which to shift the pitch
         self.loudness_shift = 0  # Value by which to shift the loudness

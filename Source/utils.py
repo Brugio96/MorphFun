@@ -3,8 +3,9 @@ import numpy as np
 import os
 import tensorflow as tf
 import pickle
+import soundfile as sf
 
-CONFIG_PATH = "Source/config/config.yml"
+CONFIG_PATH = "source/config/config.yml"
 
 
 def load_config(config_name):
@@ -31,7 +32,16 @@ def load_audio(audio_folder):
     return np.load(file_path, allow_pickle=True)
 
 
-def save_audio(audio, folder, index):
-    """Save audio to a numpy file."""
-    path = os.path.join(folder, f"{index}.npy")
-    np.save(path, audio)
+def save_audio(audio, folder, index, sample_rate=44100):
+    """Save audio to a numpy file and a wav file."""
+
+    # Assicurati che la cartella esista
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+
+    # Costruisci il percorso base senza estensione
+    base_path = os.path.join(folder, f"{index}")
+
+    # Salva in formato .npy
+    npy_path = f"{base_path}.npy"
+    np.save(npy_path, audio)

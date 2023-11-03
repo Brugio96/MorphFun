@@ -2,10 +2,10 @@ import time
 import warnings
 import gin
 
-from ddsp_utils.DDSP_audio_processor import DDSPAudioProcessor
-from ddsp_utils.DDSP_model_manager import ModelManager
+from timbre_transfer.DDSP_audio_processor import DDSPAudioProcessor
+from timbre_transfer.DDSP_model_manager import ModelManager
 from utils import load_config, CONFIG_PATH, load_dataset_stats, load_audio, save_audio
-from ddsp_utils.DDSP_features import AudioFeatureConfig, AudioFeatureModifier
+from timbre_transfer.DDSP_features import AudioFeatureConfig, AudioFeatureModifier
 
 # Constants
 SR = 16000
@@ -84,7 +84,7 @@ class DDSPAudioManager:
         """
         return load_audio(audio_folder)
 
-    def configure_audio_features(self, audio, model_files):
+    def configure_audio_features(self, audio, model_files, audio_features):
         """Configures audio features based on the provided audio and model files.
 
         Args:
@@ -94,7 +94,7 @@ class DDSPAudioManager:
         Returns:
             dict: Dictionary of audio features.
         """
-        audio_features = DDSPAudioProcessor.compute_features(audio)
+
         dataset_stats = load_dataset_stats(model_files["dataset_stats_file"])
         config_manager = DDSPConfigManager()
         config_manager.configure_model_params(model_files)
@@ -147,19 +147,21 @@ class DDSPEngine:
         self._model_manager = ModelManager(self._config)
         self._audio_manager = DDSPAudioManager(self._config)
 
-    def transform_audio(self):
+    def timbre_transfer(self):
         """Transforms audio based on the configuration and models."""
         audio_folder = self._config["files"]["audio"]
         audio = self._audio_manager.load_audio(audio_folder)
         audio = self._audio_manager.resample_audio(
             audio.ravel(), TARGET_SR, SR
         ).reshape((1, -1))
-        audio_features = self._audio_manager.configure_audio_features(
-            audio, self._model_manager.get_model_files(0)
-        )
+
+        audio_features = DDSPAudioProcessor.compute_features(audio)
 
         for index, name in enumerate(self._model_manager.model_names):
-            processed_audio = self._process_with_model(index, name, audio_features)
+            audio_features_ = self._audio_manager.configure_audio_features(
+                audio, self._model_manager.get_model_files(index), audio_features
+            )
+            processed_audio = self._process_with_model(index, name, audio_features_)
             save_audio(processed_audio, audio_folder, index)
 
     def _process_with_model(self, index, name, audio_features):

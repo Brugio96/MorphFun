@@ -1,42 +1,83 @@
-# MorphFun
-### Overview
-Playing an instrument is a lot of fun, but what if you could have... MORPHFUN!
+# MorphFun - Musical Pose-Based Timbre Transfer
 
-MorphFun is a Timbre Transfer application, that relies on a Pose Estimation approach to let the user choose the instrument.
-The core libraries used are:
-- [magenta/ddsp](https://github.com/magenta/ddsp) and its [Timbre Transfer](https://colab.research.google.com/github/magenta/ddsp/blob/master/ddsp/colab/demos/timbre_transfer.ipynb) demo module.
-- [Mediapipe](https://google.github.io/mediapipe/), for the Pose Estimation part.
-- [PyQT5](https://pypi.org/project/PyQt5/) for the Graphical User Interface.
+![MorphFun Logo](https://your-image-link-here.png)
 
-The entire project is developed in Python and Jupyter Notebook.
+MorphFun is an innovative audio manipulation application that allows users to create musical magic with just a webcam and their creativity. This README will provide a detailed overview of the project, explaining its purpose, functionality, and how to use it effectively.
 
-### Project Versions
-[Here](https://github.com/PaoloSani/MorphFun/blob/main/prototype_MORPHUN%20PRESENTATION.pptx), you can find the presentation of the prototype, developed between Python and [Processing](https://processing.org/).
-If you want to take a look at the code see this [branch](https://github.com/PaoloSani/MorphFun/tree/Prototype).
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [Getting Started](#getting-started)
+4. [Installation](#installation)
+5. [Usage](#usage)
 
-Here, instead in the [main branch](https://github.com/PaoloSani/MorphFun) you can take a look to the final code of the application.
+## 1. Introduction
 
-### Repo Structure
-Apart from the main and the [Prototype](https://github.com/PaoloSani/MorphFun/tree/Prototype) branches, already introduced, this Repo has two more branches: [Develop](https://github.com/PaoloSani/MorphFun/tree/Develop) and [gui-develop](https://github.com/PaoloSani/MorphFun/tree/gui-develop). Both are dedicated to the project development.
+MorphFun is a fun and interactive application that combines audio processing and computer vision to transform your melodies into a symphony of instruments. Users can record themselves singing or whistling a melody and watch as their performance is translated into the sounds of four distinct instruments: Violin, Flute, Trumpet, and Tenor Saxophone. With the power of Timbre Transfer and Pose Estimation, MorphFun brings a new dimension to music creation.
 
-### Main branch overview
-The code is in the [Source folder](https://github.com/PaoloSani/MorphFun/tree/main/Source).
-The main modules are:
-- [main.py](https://github.com/PaoloSani/MorphFun/blob/main/Source/main.py), which creates the application, as well as the main thread and data queues.
-- [controller.py](https://github.com/PaoloSani/MorphFun/blob/main/Source/controller.py), which orchestrate the behaviour of all the modules and the interaction between the GUI and the backend.
-- [gui.py](https://github.com/PaoloSani/MorphFun/blob/main/Source/gui.py) contains the structure of the application GUI.
-- [audio_utilities](https://github.com/PaoloSani/MorphFun/tree/main/Source/audio_utilities), which manage the audio acquisition and the reproduction of the morphed audios.
-- [ddsp_functions](https://github.com/PaoloSani/MorphFun/tree/main/Source/ddsp_functions), which contains the functions used to morph the recorded audio with [magenta/ddsp](https://github.com/magenta/ddsp).
-- [pose_estimation](https://github.com/PaoloSani/MorphFun/tree/main/Source/pose_estimation), which contains all the necessary modules for the pose_estimation part.
-- [CONFIG](https://github.com/PaoloSani/MorphFun/tree/main/Source/CONFIG), [images](https://github.com/PaoloSani/MorphFun/tree/main/Source/images), [utils.py](https://github.com/PaoloSani/MorphFun/blob/main/Source/utils.py) and [models](https://github.com/PaoloSani/MorphFun/tree/main/Source/models) allow to build the application and the pipeline with all the correct configurations.
+## 2. Features
 
-### Installation
-To test this project, clone the Repo and install the libraries listed in [requirements.txt](https://github.com/PaoloSani/MorphFun/blob/main/requirements.txt) in a virtual environment of your choice.
+### DDSP - Neural Timbre Transfer
 
-### Contact the authors
-| Name              | Contact                          |
-|-------------------|----------------------------------|
-| Armando Boemio    | armando.boemio@mail.polimi.it    |
-| Lorenzo Brugioni  | lorenzo.brugioni@mail.polimi.it  |
-| Gabriele Maucione | gabriele.maucione@mail.polimi.it |
-| Paolo Sani        | paolo1.sani@mail.polimi.it       |
+MorphFun harnesses the power of DDSP (Differentiable Digital Signal Processing) from Magenta, a Google Research project, for Neural Timbre Transfer. DDSP is a groundbreaking technique that allows us to modify the timbre, pitch, and dynamics of audio signals in a highly controllable manner.
+
+With DDSP, MorphFun takes your recorded audio and performs a remarkable transformation. It not only replicates the melody but also allows you to choose from four distinct timbres: Violin, Flute, Trumpet, and Tenor Saxophone. This means that your vocal or whistle performance can instantly sound like it's being played by a professional instrumentalist. It's a magical fusion of your creativity and the art of music.
+
+### Pose Estimation with Mediapipe Holistic
+
+MorphFun incorporates the cutting-edge Mediapipe Holistic model for Pose Estimation. This model goes beyond traditional pose estimation by providing a comprehensive understanding of the body's movements. It extracts key points and landmarks representing the pose of your face, limbs, and hand, capturing even the subtlest nuances of your performance.
+
+This real-time Pose Estimation is the foundation of MorphFun's interactive experience, enabling the application to track your movements and translate them into musical instrument choices.
+
+### Custom Pose Classification Model
+
+What sets MorphFun apart is its custom Pose Classification model. We have trained our own LSTM-based neural network to analyze the sequences of keypoints generated by Pose Estimation. This model is tailored specifically for recognizing your "musical pose" and classifying it into one of five categories: Violin, Flute, Trumpet, Tenor Saxophone, or "No Instrument" if you're not mimicking any instrument.
+
+This personalized model ensures accurate and responsive instrument selection, making your MorphFun experience feel uniquely tailored to your performance.
+
+With these advanced features, MorphFun transforms your webcam and microphone into a musical playground, offering endless possibilities for creative expression. Explore the depths of timbre transfer, pose estimation, and classification to craft your musical masterpiece.
+
+### Interactive Control
+
+MorphFun provides an easy-to-use GUI with three buttons:
+- **REC**: Start and stop audio recording.
+- **Pause/Play**: Pause or resume audio playback.
+- **Clear**: Reset your session for a fresh start.
+
+## 3. Getting Started
+
+To experience the musical magic of MorphFun, follow these steps:
+
+## 4. Installation
+Before running the application, ensure you have the required dependencies installed. You can do this by creating a Conda environment with Python 3.8.18 and then installing the dependencies using the provided `requirements.txt` file:
+
+### Create a Conda Environment
+If you don't have Conda installed, you can download and install it from [Anaconda](https://www.anaconda.com/products/distribution).
+
+1. Clone the repository to your local machine.
+2. Open a terminal or command prompt.
+3. Navigate to the project directory.
+4. Run the following command to create a Conda environment with Python 3.8.18:
+```bash
+conda create -n morphfun python=3.8.18
+```
+
+### Install Dependencies
+5. After creating the Conda environment, activate it using the following command (on Windows, replace `source` with `conda activate`):
+```bash
+source activate morphfun
+```
+
+6. Finally, install the project dependencies using `pip` and the provided `requirements.txt` file:
+```bash
+pip install -r requirements.txt
+```
+
+## 5. Usage
+
+1. Clone the repository to your local machine.
+2. Create and activate the Conda environment as instructed above.
+3. Execute the following command to start MorphFun:
+```bash
+python3 Source/main.py
+```
