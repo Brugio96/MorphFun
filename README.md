@@ -1,6 +1,5 @@
 # MorphFun - Musical Pose-Based Timbre Transfer
 
-![MorphFun Logo](https://your-image-link-here.png)
 
 MorphFun is an innovative audio manipulation application that allows users to create musical magic with just a webcam and their creativity. This README will provide a detailed overview of the project, explaining its purpose, functionality, and how to use it effectively.
 
