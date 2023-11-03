@@ -2,12 +2,11 @@ venv/
 .venv/
 *.pyc
 __pycache__/
-Source/audio_utilities/__pycache__
-Source/ddsp_functions/__pycache__
+Source/audio/__pycache__
+Source/timbre_transsfer/__pycache__
 cpac-venv/
-Source/audio/
-Source/GUI/__pycache__
-Source/pose_estimation/__pycache__
-Source/pose_estimation/Dataset
-Souce/pose_estimation/FineTuning
+Source/gui/__pycache__
+Source/pose/__pycache__
+Source/pose/Dataset
+Souce/pose/FineTuning
 
