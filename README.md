@@ -49,6 +49,8 @@ This personalized model ensures accurate and responsive instrument selection, ma
 
 ### Interactive Control
 
+![](/readme_images/GUI.png)
+
 MorphFun provides an easy-to-use GUI with three buttons:
 - **REC**: Start and stop audio recording.
 - **Pause/Play**: Pause or resume audio playback.
