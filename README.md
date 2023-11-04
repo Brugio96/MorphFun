@@ -78,5 +78,5 @@ pip install -r requirements.txt
 2. Create and activate the Conda environment as instructed above.
 3. Execute the following command to start MorphFun:
 ```bash
-python3 Source/main.py
+python3 source/main.py
 ```
