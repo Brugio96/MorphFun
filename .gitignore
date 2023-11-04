@@ -4,10 +4,10 @@ venv/
 __pycache__/
 source/audio/__pycache__
 source/timbre_transfer/__pycache__
-cpac-venv/
 source/gui/__pycache__
 source/pose/__pycache__
 source/pose/Dataset
 source/pose/FineTuning
 .DS_Store
+.vscode
 

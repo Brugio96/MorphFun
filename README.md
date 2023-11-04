@@ -1,24 +1,25 @@
 # MorphFun - Musical Pose-Based Timbre Transfer
 
-
 MorphFun is an innovative audio manipulation application that allows users to create musical magic with just a webcam and their creativity. This README will provide a detailed overview of the project, explaining its purpose, functionality, and how to use it effectively.
 
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Features](#features)
-3. [Getting Started](#getting-started)
+3. [How It Works](#how-it-works)
 4. [Installation](#installation)
 5. [Usage](#usage)
 
 ## 1. Introduction
 
-MorphFun is a fun and interactive application that combines audio processing and computer vision to transform your melodies into a symphony of instruments. Users can record themselves singing or whistling a melody and watch as their performance is translated into the sounds of four distinct instruments: Violin, Flute, Trumpet, and Tenor Saxophone. With the power of Timbre Transfer and Pose Estimation, MorphFun brings a new dimension to music creation.
+MorphFun is a fun and interactive application that combines audio processing and computer vision to transform your melodies into a symphony of instruments. With the power of Timbre Transfer, Pose Estimation, and Pose Classification, MorphFun brings a new dimension to music creation.
+
+Have you ever wanted to see what your voice or whistle would sound like when played by a professional violinist or saxophonist? With MorphFun, your musical dreams become a reality. Sing or whistle into your microphone, and see your performance magically transformed into the sounds of four distinct instruments: Violin, Flute, Trumpet, or Tenor Saxophone. It's a fusion of your creativity and the art of music.
 
 ## 2. Features
 
 ### DDSP - Neural Timbre Transfer
 
-MorphFun harnesses the power of DDSP (Differentiable Digital Signal Processing) from Magenta, a Google Research project, for Neural Timbre Transfer. DDSP is a groundbreaking technique that allows us to modify the timbre, pitch, and dynamics of audio signals in a highly controllable manner.
+MorphFun harnesses the power of DDSP (Differentiable Digital Signal Processing) from Magenta, a Google Research project, for Neural Timbre Transfer. DDSP is a groundbreaking technique that allows you to modify the timbre, pitch, and dynamics of audio signals in a highly controllable manner.
 
 With DDSP, MorphFun takes your recorded audio and performs a remarkable transformation. It not only replicates the melody but also allows you to choose from four distinct timbres: Violin, Flute, Trumpet, and Tenor Saxophone. This means that your vocal or whistle performance can instantly sound like it's being played by a professional instrumentalist. It's a magical fusion of your creativity and the art of music.
 
@@ -34,8 +35,6 @@ What sets MorphFun apart is its custom Pose Classification model. We have traine
 
 This personalized model ensures accurate and responsive instrument selection, making your MorphFun experience feel uniquely tailored to your performance.
 
-With these advanced features, MorphFun transforms your webcam and microphone into a musical playground, offering endless possibilities for creative expression. Explore the depths of timbre transfer, pose estimation, and classification to craft your musical masterpiece.
-
 ### Interactive Control
 
 MorphFun provides an easy-to-use GUI with three buttons:
@@ -43,9 +42,18 @@ MorphFun provides an easy-to-use GUI with three buttons:
 - **Pause/Play**: Pause or resume audio playback.
 - **Clear**: Reset your session for a fresh start.
 
-## 3. Getting Started
+## 3. How It Works
 
-To experience the musical magic of MorphFun, follow these steps:
+MorphFun's magic happens through a seamless interaction of its key features. Here's an overview of the user-application interaction flow:
+
+1. The user records an audio performance through the Graphical User Interface (GUI), singing or whistling a melody.
+2. The recorded audio and melody are processed through DDSP, creating four distinct audio outputs, each simulating the timbre of a different instrument: Violin, Flute, Trumpet, and Tenor Saxophone.
+3. Simultaneously, the user's performance is captured by the webcam, and Pose Estimation (powered by Mediapipe Holistic) extracts key landmarks to represent the user's pose, including their face, limbs, and hand movements.
+4. These pose landmarks are fed into a custom Pose Classification model, which classifies the user's performance as one of the four instrument categories or "No Instrument."
+5. Based on the Pose Classification result, the corresponding instrument's audio output is played in real-time, creating a harmonious fusion of your performance and the instrument's sounds.
+
+MorphFun turns your webcam and microphone into a musical playground, offering endless possibilities for creative expression.
+
 
 ## 4. Installation
 Before running the application, ensure you have the required dependencies installed. You can do this by creating a Conda environment with Python 3.8.18 and then installing the dependencies using the provided `requirements.txt` file:
